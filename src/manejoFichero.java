@@ -45,6 +45,7 @@ abstract class manejoFichero {
         //cpm este if comprobamos si esta o no en el treemap
         if (mapa.containsKey(mapa.ceilingKey(dni))) {//eto hay que cambiarlo por la clave que se guarda en el mapa
             System.out.println("el archivo existe y vamos a proceder a darlo de baja");
+            mapa.remove(dni);
         } else {
             System.out.println("lo siento no podemos dar de baja ese dni puesto que no existe en el archivo");
         }

@@ -19,6 +19,9 @@ public class Main {
         Fiche fichero = null;
         String dni;
         int salario;
+        
+        fichero.crearfichero("Empleados");
+        
         do {
             do {
                 System.out.println("Elija una opcion");
@@ -35,7 +38,7 @@ public class Main {
                 case 1:
 
                     insertar();
-                    
+
                     break;
                 case 2:
                     System.out.println("introduzca el dni que desea eliminar");
@@ -161,13 +164,12 @@ public class Main {
             //  }while(!"s".equals(continuar) && !"N".equals(continuar) && !"s".equals(continuar) && !"n".equals(continuar));
             emple = new Empleado(nombreyape, sexo, salario, anio, mes, dia, tipoemple, provincia);
 
-            
-            
         } catch (NumberFormatException p) {
             System.out.println(" ha habido algun fallo en la casteo de algun numero");
+        } finally {
+            return emple;
         }
-        
-        return emple;
+
     }
 
 }
