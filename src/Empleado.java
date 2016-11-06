@@ -1,4 +1,6 @@
+
 import java.io.Serializable;
+
 /**
  *
  * @author Mateo Salmeron
@@ -26,6 +28,58 @@ public class Empleado implements Serializable {
         this.provincia = provincia;
         this.sexo = sexo;
 
+    }
+
+    @Override
+    public String toString() {
+        String hombreMujer = "Mujer";
+        if (sexo == 'H') {
+            hombreMujer = "Hombre";
+        }
+        String prov = null;
+        switch (provincia) {
+            case 1:
+                prov = "Almeria";
+                break;
+            case 2:
+                prov = "Cádiz";
+                break;
+            case 3:
+                prov = "Cordoba";
+                break;
+            case 4:
+                prov = "Granada";
+                break;
+            case 5:
+                prov = "Huelva";
+                break;
+            case 6:
+                prov = "Jaen";
+                break;
+            case 7:
+                prov = "Malaga";
+                break;
+            case 8:
+                prov = "Sevilla";
+        }
+        String tipoEmpleado = null;
+        switch (tipoemple) {
+            case 'C':
+                tipoEmpleado = "A Comision";
+                break;
+            case 'F':
+                tipoEmpleado = "Fijo";
+                break;
+            case 'D':
+                tipoEmpleado = "A Domicilio";
+        }
+        return "\nNombre y Apellidos: " + nombreYApellidos
+                + "\nDNI: " + dni
+                + "\n" + hombreMujer
+                + "\nSalario: " + salario + "€"
+                + "\nFecha Ingreso: " + diaingreso + "/" + mesingreso + "/" + anioingreso
+                + "\nTipo de Empleado: " + tipoEmpleado
+                + "\nProvincia: " + prov + "\n";
     }
 
     public void setDni(String dni) {
