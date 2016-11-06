@@ -15,13 +15,13 @@ import java.util.TreeMap;
  *
  * @author Administrador
  */
-abstract class manejoFichero {
+abstract class ManejoFichero {
 
     String nombrefichero;
-    File fichero;
-    TreeMap mapa;
+    private File fichero;
+    private TreeMap mapa;
 
-    public manejoFichero() {
+    public ManejoFichero() {
         // this.nombrefichero = nombrefiche;
 
     }
@@ -53,12 +53,12 @@ abstract class manejoFichero {
     }
 
     public void modificacion(int salario, String dni) {
-        if(mapa.containsKey(dni)){
+        if (mapa.containsKey(dni)) {
             Empleado e = (Empleado) mapa.ceilingKey(dni);
             e.setSalario(salario);
             mapa.replace(dni, e);
             System.out.println("Registro con DNI: " + dni + " Actualizado");
-        }else{
+        } else {
             System.out.println("El Registro no existe");
         }
     }
@@ -77,10 +77,6 @@ abstract class manejoFichero {
         } catch (FileNotFoundException e) {
             System.out.println("no se ha encontrado el fichero");
         }
-    }
-
-    public void cerrarfichero() {
-
     }
 
     public void crearTreeMap() {

@@ -11,49 +11,56 @@ public class Main {
         Fiche fichero = new Fiche();
         String dni;
         int salario;
+        char continuar;
 
         // fichero.crearfichero("empleados");
         do {
             do {
-                
-                System.out.println("1. Dar de alta");
-                System.out.println("2. Dar de baja");
-                System.out.println("3. Modificar");
-                System.out.println("4. Listar empleados, ordenado por DNI");
-                System.out.println("5. Listar empleados, ordenados por orden de introducción");
-                System.out.println("6. Salir");
-                System.out.print("Elija opción [1-6]: ");
-                opcion = Integer.parseInt(sc.nextLine());
-            } while (opcion < 1 || opcion > 6);
+                do {
 
-            switch (opcion) {
-                case 1:
+                    System.out.println("\n1. Dar de alta");
+                    System.out.println("2. Dar de baja");
+                    System.out.println("3. Modificar");
+                    System.out.println("4. Listar empleados, ordenado por DNI");
+                    System.out.println("5. Listar empleados, ordenados por orden de introducción");
+                    System.out.println("6. Salir");
+                    System.out.print("Elija opción [1-6]: ");
+                    opcion = Integer.parseInt(sc.nextLine());
+                } while (opcion < 1 || opcion > 6);
 
-                    fichero.alta(insertar());
-                    //fichero.muestraemple(insertar());
+                switch (opcion) {
+                    case 1:
 
-                    break;
-                case 2:
-                    System.out.println("introduzca el dni que desea eliminar");
-                    dni = sc.nextLine();
-                    // fichero.baja(dni);
-                    break;
-                case 3:
-                    System.out.println("introduzca el dni del empleado al que desea cambiar el salario ");
-                    dni = sc.nextLine();
-                    System.out.println("introduzca el nuevo salario");
-                    salario = Integer.parseInt(sc.nextLine());
-                    fichero.modificacion(salario, dni);
-                    break;
-                case 4:
-                    fichero.lecturadni();
-                    break;
-                case 5:
-                    fichero.lecturaordenada();
-                    break;
-            }
+                        fichero.alta(insertar());
+                        //fichero.muestraemple(insertar());
 
-        } while (opcion > 5);
+                        break;
+                    case 2:
+                        System.out.println("introduzca el dni que desea eliminar");
+                        dni = sc.nextLine();
+                        // fichero.baja(dni);
+                        break;
+                    case 3:
+                        System.out.println("introduzca el dni del empleado al que desea cambiar el salario ");
+                        dni = sc.nextLine();
+                        System.out.println("introduzca el nuevo salario");
+                        salario = Integer.parseInt(sc.nextLine());
+                        fichero.modificacion(salario, dni);
+                        break;
+                    case 4:
+                        fichero.lecturadni();
+                        break;
+                    case 5:
+                        fichero.lecturaordenada();
+                        break;
+                }
+
+            } while (opcion > 5);
+
+            System.out.print("¿Desea Continuar?: ");
+            continuar = sc.nextLine().charAt(0);
+
+        } while (continuar == 's' || continuar == 'S');
 
     }
 
