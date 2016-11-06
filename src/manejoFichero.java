@@ -43,21 +43,29 @@ abstract class manejoFichero {
 
     public void baja(String dni) {
         //cpm este if comprobamos si esta o no en el treemap
-        if (mapa.containsKey(mapa.ceilingKey(dni))) {//eto hay que cambiarlo por la clave que se guarda en el mapa
+        if (mapa.containsKey(mapa.ceilingKey(dni))) {
             System.out.println("el archivo existe y vamos a proceder a darlo de baja");
             mapa.remove(dni);
         } else {
-            System.out.println("lo siento no podemos dar de baja ese dni puesto que no existe en el archivo");
+            System.out.println("lo siento no podemos dar de baja ese dni puesto que no existe en el fichero");
         }
-        
+
     }
 
     public void modificacion(int salario, String dni) {
-
+        if(mapa.containsKey(dni)){
+            Empleado e = (Empleado) mapa.ceilingKey(dni);
+            e.setSalario(salario);
+            mapa.replace(dni, e);
+            System.out.println("Registro con DNI: " + dni + " Actualizado");
+        }else{
+            System.out.println("El Registro no existe");
+        }
     }
 
-    public void lectura() {
-
+    public void lectura(String dni) {
+        Empleado e = (Empleado) mapa.ceilingKey(dni);
+        System.out.println(e.toString());
     }
 
     public void abrirfichero() {
@@ -76,19 +84,26 @@ abstract class manejoFichero {
     }
 
     public void crearTreeMap() {
+
         mapa = new TreeMap();
 
-        //todo esto debe ir en el insertaren tree map
+    }
+
+    public void insertarEnTreeMap(Empleado emple, String dni) {
+
+        if (mapa.containsKey(dni)) {
+            System.out.println("No se puede insertar esta clave en el mapa porque ya existe");
+        } else {
+            mapa.put(dni, emple);
+        }
+
+    }
+
+}
+/*//todo esto debe ir en el insertaren tree map
         //esto devuelve true si en el mapa ya hay una clave con ese valor para poder denegar la opcion a insertar en mapa
         if (mapa.containsKey(mapa)) {//eto hay que cambiarlo por la clave que se guarda en el mapa
             System.out.println("no se puede insertar esta clave en el mapa pk ya existe");
         } else {
             mapa.put(mapa, mapa);//esto debe de ser  un k clave,String dni
-        }
-    }
-
-    public void insertarEnTreeMap(Empleado emple) {
-
-    }
-
-}
+        }*/
